@@ -1,0 +1,57 @@
+{
+  "name": "victor-nft",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "env-cmd -f .env vite",
+    "dev:production": "env-cmd -f .env.production vite",
+    "dev:build": "rm -rf dist && env-cmd -f .env vite build",
+    "build": "rm -rf dist && env-cmd -f .env.production vite build",
+    "build:start": "serve -s dist",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"./src/**/*.+(js|jsx|mjs|ts|tsx|json|css|scss|sass|md|html)\"",
+    "lint-staged": "lint-staged --concurrent false",
+    "pretty-quick": "pretty-quick --staged",
+    "prepare": "rm -rf .husky && husky install && husky add .husky/pre-commit \"yarn lint-staged \nyarn pretty-quick\""
+  },
+  "lint-staged": {
+    "**/*.+(js|jsx|mjs|ts|tsx)": [
+      "yarn format",
+      "yarn lint",
+      "yarn lint:fix"
+    ]
+  },
+  "dependencies": {
+    "axios": "^1.1.3",
+    "dotenv": "^16.0.3",
+    "env-cmd": "^10.1.0",
+    "moment": "^2.29.4",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-query": "^3.39.2",
+    "react-router-dom": "^6.4.3",
+    "react-toastify": "^9.1.1",
+    "web3": "^1.8.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
+    "@vitejs/plugin-react": "^2.2.0",
+    "autoprefixer": "^10.4.13",
+    "eslint": "^8.27.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.10",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.0.3",
+    "postcss": "^8.4.19",
+    "prettier": "^2.7.1",
+    "pretty-quick": "^3.1.3",
+    "tailwindcss": "^3.2.4",
+    "vite": "^3.2.3"
+  }
+}
